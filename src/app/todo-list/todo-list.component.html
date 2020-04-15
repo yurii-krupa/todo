@@ -1,4 +1,18 @@
-<p>todo-list works!</p>
-<app-todo-list-item></app-todo-list-item>
-<app-todo-list-item></app-todo-list-item>
-<app-todo-list-item></app-todo-list-item>
+<div class="todo-list-items-wrapper">
+
+  <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+
+    <div fxFlex="0 1 33.3%" fxLayout="column" fxLayoutAlign="center center"
+         (click)="openNewTodoModal($event)">
+      <mat-icon>add_box</mat-icon>
+      Create new Todo
+    </div>
+
+    <div fxFlex="0 1 33.3%" fxLayout="column" fxLayoutAlign="center"
+      *ngFor="let todo of todoList" >
+      <app-todo-list-item [todoItem]="todo"></app-todo-list-item>
+    </div>
+
+  </div>
+
+</div>

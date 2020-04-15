@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Todo} from '../../shared/models/todo.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { Todo, TodoStatusEnum } from '../../shared/models/todo.model';
+import { TodoDataService } from '../../shared/services/todo-services/todo-data.service';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -10,9 +11,25 @@ export class TodoListItemComponent implements OnInit {
 
   @Input() todoItem: Todo;
 
-  constructor() { }
+  constructor(
+    private dataService: TodoDataService
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  saveItem() {
+    this.dataService.updateItem(this.todoItem);
+  }
+
+  archiveItem() {
+    this.todoItem.status = TodoStatusEnum[TodoStatusEnum.archived];
+    this.dataService.updateItem(this.todoItem);
+  }
+
+  deleteItem() {
+    this.dataService.deleteItem(this.todoItem.id);
   }
 
 }

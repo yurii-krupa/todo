@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Create new Todo</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Topic, name, theme" [(ngModel)]="data.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Leave a note</mat-label>
+      <textarea matInput placeholder="..."
+                class="todo-description"
+                [(ngModel)]="data.description"
+      ></textarea>
+    </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data">Create</button>
+</div>

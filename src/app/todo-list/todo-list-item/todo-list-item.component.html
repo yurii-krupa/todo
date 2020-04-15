@@ -1,23 +1,29 @@
 <mat-card>
 
   <mat-card-header>
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Topic, name, theme">
+      <input matInput placeholder="Topic, name, theme" [(ngModel)]="todoItem.name">
     </mat-form-field>
   </mat-card-header>
 
   <mat-card-content>
-    <mat-form-field class="example-full-width">
-      <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    <mat-form-field>
+      <mat-label>Leave a note</mat-label>
+      <textarea matInput placeholder="..." [(ngModel)]="todoItem.description"
+        class="todo-description"
+      ></textarea>
     </mat-form-field>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button>Save</button>
-    <button mat-button>Cancel</button>
-    <button mat-button>Archive</button>
+    <button mat-button (click)="saveItem()">Save</button>
+    <button mat-button (click)="archiveItem()">Archive</button>
+    <button mat-button (click)="deleteItem()">Delete</button>
   </mat-card-actions>
+
+  <mat-card-footer>
+    <span>edited at: {{todoItem.editedAt | date: 'short' }}</span>
+  </mat-card-footer>
 
 </mat-card>

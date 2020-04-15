@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderModule } from './shared/components/header/header.module';
-import { TodoDataService } from './shared/services/todo-services/todo-data.service'
+import { TodoDataService } from './shared/services/todo-services/todo-data.service';
 import { TodoListModule } from './todo-list/todo-list.module';
 
 @NgModule({

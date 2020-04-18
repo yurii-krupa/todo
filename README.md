@@ -1,5 +1,7 @@
 # ToDo
 
+This project was deployed to heroku and available by following [LINK](https://vast-taiga-54924.herokuapp.com) 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
 ## Development server

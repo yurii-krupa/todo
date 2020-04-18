@@ -1,3 +1,8 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <span>Todo</span>
+
+  <span>
+    <a class="sign-in" routerLink="/auth" *ngIf="!isAuthenticated">Sign In</a>
+    <a class="sign-in" routerLink="/auth" *ngIf="isAuthenticated" (click)="logOut()">Log out</a>
+  </span>
 </mat-toolbar>

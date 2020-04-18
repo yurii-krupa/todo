@@ -11,6 +11,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HeaderModule } from './shared/components/header/header.module';
 import { TodoDataService } from './shared/services/todo-services/todo-data.service';
 import { TodoListModule } from './todo-list/todo-list.module';
+import { AuthModule } from './shared/components/auth/auth.module';
+import { AuthService } from './shared/services/auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -22,12 +26,17 @@ import { TodoListModule } from './todo-list/todo-list.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     HeaderModule,
-    TodoListModule
+    TodoListModule,
+    AuthModule,
+    HttpClientModule
   ],
   providers: [
-    TodoDataService
+    TodoDataService,
+    AuthService
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

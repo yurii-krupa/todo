@@ -1,0 +1,40 @@
+
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h3 *ngIf="isLoadingMode" style="text-align: center">Loading</h3>
+    <form class="login-form" *ngIf="!isLoadingMode">
+      <table class="login-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="login-full-width">
+              <input matInput placeholder="Username" [(ngModel)]="user.email" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="login-full-width">
+              <input matInput placeholder="Password" [(ngModel)]="user.password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="signIn()" color="primary">Login</button>
+    <button mat-raised-button (click)="signUp()" color="primary">Sign Up</button>
+  </mat-card-actions>
+</mat-card>
+
+<br>
+
+<mat-list role="list">
+  <h4>TEST Credentials</h4>
+  <h5>test@mail.ua: 12345qwert</h5>
+
+  <h4 mat-subheader>Sign up also works - feel free to create a new user</h4>
+</mat-list>

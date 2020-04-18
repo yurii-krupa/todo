@@ -3,14 +3,17 @@
   <mat-card-header>
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Topic, name, theme" [(ngModel)]="todoItem.name">
+      <input matInput placeholder="Topic, name, theme"
+             [(ngModel)]="todoItem.name">
     </mat-form-field>
   </mat-card-header>
 
   <mat-card-content>
     <mat-form-field>
       <mat-label>Leave a note</mat-label>
-      <textarea matInput placeholder="..." [(ngModel)]="todoItem.description"
+      <textarea
+        matInput placeholder="..."
+        [(ngModel)]="todoItem.description"
         class="todo-description"
       ></textarea>
     </mat-form-field>

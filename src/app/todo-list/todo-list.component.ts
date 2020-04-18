@@ -26,7 +26,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscriptions.add(this.todoDataService.fetchAll().subscribe(todos  => {
+    this.subscriptions.add(this.todoDataService.fetchAll()
+      .subscribe(todos  => {
       this.todoList = todos.sort((a,b) => a.editedAt < b.editedAt ? 1 : -1);
     }));
   }

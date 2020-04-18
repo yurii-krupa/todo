@@ -17,8 +17,8 @@ export class Todo {
     this.id = data.id as string || '';
     this.name = data.name as string;
     this.description = data.description as string || '';
-    this.createdAt = new Date((data.created_at as number || Date.now()));
-    this.editedAt = new Date((data.edited_at as number || Date.now()));
+    this.createdAt = new Date((Number(data.created_at) || Date.now()));
+    this.editedAt = new Date((Number(data.edited_at) || Date.now()));
     this.status =  data.status || 'active';
   }
 

@@ -20,16 +20,19 @@ export class TodoListItemComponent implements OnInit {
   }
 
   saveItem() {
-    this.dataService.updateItem(this.todoItem);
+    this.dataService.updateItem(this.todoItem).then(res => console.log(res))
+      .catch(err => console.log(err));;
   }
 
   archiveItem() {
     this.todoItem.status = TodoStatusEnum[TodoStatusEnum.archived];
-    this.dataService.updateItem(this.todoItem);
+    this.dataService.updateItem(this.todoItem).then(res => console.log(res))
+      .catch(err => console.log(err));;
   }
 
   deleteItem() {
-    this.dataService.deleteItem(this.todoItem.id);
+    this.dataService.deleteItem(this.todoItem.id).then(res => console.log(res))
+      .catch(err => console.log(err));;
   }
 
 }

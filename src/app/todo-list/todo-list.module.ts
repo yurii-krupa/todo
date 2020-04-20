@@ -10,7 +10,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatDialogModule,
+    MatSnackBarModule,
     FlexLayoutModule,
     FormsModule
   ],

@@ -14,8 +14,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   user: IUser = {
     email: '',
-    password: '',
-    returnSecureToken: true
+    password: ''
   };
 
   isLoadingMode = false;

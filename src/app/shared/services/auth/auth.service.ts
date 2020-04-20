@@ -6,7 +6,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export interface IUser {
   email: string;
   password: string;
-  returnSecureToken: boolean;
 }
 
 @Injectable({

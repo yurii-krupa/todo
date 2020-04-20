@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { TodoDataService } from '../shared/services/todo-services/todo-data.service';
 import { Subscription} from 'rxjs';
 import { Todo } from '../shared/models/todo.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { NewTodoItemComponent } from './new-todo-item/new-todo-item.component';
 
 @Component({
@@ -14,7 +14,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   constructor(
     private todoDataService: TodoDataService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   private subscriptions: Subscription = new Subscription();
@@ -26,10 +27,12 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscriptions.add(this.todoDataService.fetchAll()
-      .subscribe(todos  => {
-      this.todoList = todos.sort((a,b) => a.editedAt < b.editedAt ? 1 : -1);
-    }));
+    this.subscriptions.add(
+      this.todoDataService.fetchAll()
+        .subscribe(todoList  => {
+          this.todoList = todoList.sort((a, b) => a.editedAt < b.editedAt ? 1 : -1);
+        })
+    );
   }
 
   openNewTodoModal(e: Event) {
@@ -41,10 +44,27 @@ export class TodoListComponent implements OnInit, OnDestroy {
         description: null
       })
     });
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        this.todoDataService.addItem(res as Todo);
-      }
+
+    this.subscriptions.add(
+      dialogRef.afterClosed()
+        .subscribe(res => {
+          if (res) {
+            this.todoDataService.addItem(res as Todo)
+            .then(_ => {
+              this.openSnackBarMsg(`Item archived`);
+            })
+            .catch(err => {
+              this.openSnackBarMsg(`Error while creating - ${err}`);
+            });
+          }
+        })
+    );
+  }
+
+  openSnackBarMsg(message): void {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+      verticalPosition: 'top'
     });
   }
 
